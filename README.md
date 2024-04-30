@@ -14,56 +14,42 @@ _Crea flujos de trabajo que te permitan utilizar Integración Continua (CI) para
 </header>
 
 <!--
-  Elige 3-5 pasos para tu curso.
-  ¡El primer paso siempre es el más difícil, así que elige algo fácil!
-  Enlaza a docs.github.com para explicaciones adicionales.
-  ¡Anima a los usuarios a abrir nuevas pestañas para los pasos!
+  <<< Notas del autor: Paso 2 >>>
+  Comienza este paso reconociendo el paso anterior.
+  Define los términos y enlaza a docs.github.com.
 -->
 
-## paso 1: Agregar un workflow de prueba
 
-_Bienvenido a "GitHub Actions: Integración Continua"! :wave:_
+## Paso 2: Corregir la prueba
 
-**¿Qué es la _integración continua_?**: [La integración continua](https://es.wikipedia.org/wiki/Integración_continua) puede ayudarte a mantener los estándares de calidad de tu equipo ejecutando pruebas e informando los resultados en GitHub. Las herramientas de CI ejecutan compilaciones y pruebas, desencadenadas por commits. Los resultados de calidad se envían de vuelta a GitHub en la pull request. El objetivo es tener menos problemas en `stemdo` y obtener una retroalimentación más rápida mientras trabajas.
+_¡Excelente trabajo al agregar el workflow con plantilla! :tada:_
 
-![Una ilustración con una mitad izquierda y una mitad derecha. En la izquierda: ilustración de cómo están encapsulados los términos de GitHub Actions. En el nivel más alto: flujos de trabajo y disparadores de eventos. Dentro de los flujos de trabajo: trabajos y definición del entorno de compilación. Dentro de los trabajos: pasos. Dentro de los pasos: una llamada a una action. En la derecha: la secuencia evaluada: workflow, trabajo, paso, action.](https://user-images.githubusercontent.com/6351798/88589835-f5ce0900-d016-11ea-8c8a-0e7d7907c713.png)
+Agregar ese archivo a esta rama es suficiente para que GitHub Actions comience a ejecutar CI en tu repositorio.
 
+Cuando un workflow de GitHub Actions está en ejecución, deberías ver algunas verificaciones en progreso, como se muestra en la captura de pantalla a continuación.
 
-- **workflow**: Un workflow es una unidad de automatización desde su inicio hasta su finalización, incluyendo la definición de lo que desencadena la automatización, qué entorno u otros aspectos deben tenerse en cuenta durante la automatización y qué debe suceder como resultado del desencadenante.
-- **Job**: Un Job es una sección del workflow y está compuesto por uno o más pasos. En esta sección de nuestro workflow, la plantilla define los pasos que componen el trabajo de `build`.
-- **Step**: Un paso representa un _efecto_ de la automatización. Un paso podría definirse como una Action de GitHub u otra unidad, como imprimir algo en la consola.
-- **Action**: Una action es una pieza de automatización escrita de manera compatible con los flujos de trabajo. Las acciones pueden ser escritas por GitHub, por la comunidad de código abierto, ¡o tú mismo puedes escribirlas!
+<img alt="verificaciones en progreso en un cuadro de fusión" src=https://user-images.githubusercontent.com/16547949/66080348-ecc5f580-e533-11e9-909e-c213b08790eb.png width=400 />
 
+Puedes seguir el progreso mientras GitHub Actions ejecuta tu trabajo yendo a la pestaña **Actions** o haciendo clic en "Details" en el cuadro de fusión a continuación.
 
-Para obtener más información, consulta [Sintaxis de flujo de trabajo para GitHub Actions](https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions) en los documentos de GitHub.
-
-Primero, agreguemos un flujo de trabajo para _lint_ (limpiar, como un rodillo de pelusa) nuestros archivos Markdown en este repositorio.
+Cuando las pruebas finalicen, verás una marca de verificación roja :x: o una marca de verificación verde :heavy_check_mark: en el cuadro de fusión. En ese momento, puedes acceder a los registros del trabajo de compilación y sus pasos asociados.
 
 
-### :keyboard: Actividad: Agregar un flujo de trabajo de prueba
+_Al observar los registros, ¿puedes identificar qué pruebas fallaron?_ Para encontrarlo, ve a una de las compilaciones fallidas y desplázate por el registro. Busca una sección que liste todas las pruebas unitarias. Estamos buscando el nombre de la prueba con una "x".
 
-1. Abre una nueva pestaña del navegador y trabaja a través de los siguientes pasos en esa pestaña mientras lees las instrucciones en esta pestaña.
-1. Ve a la **pestaña Actions**.
-1. Haz clic en **Nuevo workflow**.
-1. Busca "Simple workflow" y haz clic en **Configurar**.
-1. Nombre de tu flujo de trabajo `ci.yml`.
-1. Actualiza el flujo de trabajo eliminando los dos últimos pasos.
-1. Agrega el siguiente paso al final de tu flujo de trabajo:
+<img alt="captura de pantalla de un registro de compilación de muestra con los nombres de las pruebas desenfocados" src=https://user-images.githubusercontent.com/16547949/65922013-e740a200-e3b1-11e9-8151-faf52c30201e.png width=400 />
 
+Si las verificaciones no aparecen o si las verificaciones están atascadas en progreso, hay algunas cosas que puedes hacer para intentar activarlas:
 
-   ```yml
-   - name: Run markdown lint
-     run: |
-       npm install remark-cli remark-preset-lint-consistent
-       npx remark . --use remark-preset-lint-consistent --frail
-   ```
-
-    > Incluso después de que el código esté indentado correctamente en `ci.yml`, verás un error de compilación en GitHub Actions. Lo solucionaremos en el siguiente paso.
+- Actualiza la página, es posible que el workflow se haya ejecutado y la página simplemente no se haya actualizado con ese cambio.
+- Intenta hacer un commit en esta rama. Nuestro workflow se activa con un evento `push`, y hacer un commit en esta rama resultará en un nuevo `push`.
+- Edita el archivo de workflow en GitHub y asegúrate de que no haya líneas rojas que indiquen un problema de sintaxis.
 
 
-1. Haz clic en **Commit changes...**, y elige crear una nueva rama llamada `ci`.
-1. Haz clic en **Propose changes**.
-1. Haz clic en **Crear pull request**.
+### :keyboard: Actividad: Corregir la prueba
+
+1. Actualiza el contenido en la rama `ci` para que la prueba pase. Necesitas mirar los registros para ver qué causó que la prueba fallara.
+1. **CCommit changes**.
 1. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo instrucciones). [GitHub Actions](https://docs.github.com/actions) se actualizará automáticamente al siguiente paso.
 
 <footer>
