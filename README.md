@@ -14,22 +14,30 @@ _Crea flujos de trabajo que te permitan utilizar Integración Continua (CI) para
 </header>
 
 <!--
-  <<< Notas del autor: Paso 5 >>>
-  Comienza este paso reconociendo el paso anterior.
-  Define los términos y enlaza a docs.github.com.
+  <<< Notas del autor: Finish >>>
+  Revisa lo que aprendimos, solicita retroalimentación, proporciona los próximos pasos.
 -->
 
-## Paso 5: Fusiona tu pull request
+## Finalizar
 
-_¡Casi estamos allí! :heart:_
+_¡Felicidades amigo, has completado este curso!_
 
-¡Ahora puedes [fusionar](https://docs.github.com/get-started/quickstart/github-glossary#merge) tu pull request!
+<img src=https://octodex.github.com/images/Fintechtocat.png alt=celebrate width=300 align=right>
 
-### :keyboard: Actividad: Fusiona tu pull request
+Aquí tienes un resumen de todas las tareas que has completado en tu repositorio:
 
-1. Ve a la pestaña **Pull requests**.
-1. Haz clic en **Merge pull request**.
-1. _Una vez que activas la protección de rama, las Acciones ya no pueden enviar directamente a la rama `stemdo`. Asegúrate de estar en la rama `ci` en la página desde la que estás siguiendo las instrucciones._ Espera unos 20 segundos y luego actualiza la página. [GitHub Actions](https://docs.github.com/actions) se actualizará automáticamente al siguiente paso.
+- Creamos un flujo de trabajo de Actions para revisar nuestros archivos Markdown.
+- Detectaste un problema en un archivo y lo corregiste antes de que pudiera llegar a `stemdo`.
+- Aprendiste a usar artefactos de compilación para informes de prueba.
+- Habilitaste protecciones de rama para requerir que el flujo de trabajo pase antes de la fusión.
+
+### ¿Qué sigue?
+
+- Obtén más ideas sobre lo que puedes hacer con [awesome actions](https://github.com/sdras/awesome-actions).
+- Nos encantaría saber qué opinas sobre este curso [en nuestro foro de discusión](https://github.com/orgs/skills/discussions/categories/test-with-actions).
+- [Realiza otro curso de GitHub Skills](https://github.com/skills).
+- [Lee la documentación de GitHub Getting Started](https://docs.github.com/get-started).
+- Para encontrar proyectos a los que contribuir, echa un vistazo a [GitHub Explore](https://github.com/explore).
 
 <footer>
 
