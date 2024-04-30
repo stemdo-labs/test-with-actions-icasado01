@@ -43,7 +43,7 @@ Primero, agreguemos un flujo de trabajo para _lint_ (limpiar, como un rodillo de
        npx remark . --use remark-preset-lint-consistent --frail
    ```
 
-    > Incluso después de que el código esté indentado correctamente en `ci.yml`, verás un error de compilación en GitHub Actions. Lo solucionaremos en el siguiente paso.
+> Incluso después de que el código esté indentado correctamente en `ci.yml`, verás un error de compilación en GitHub Actions. Lo solucionaremos en el siguiente paso.
 
 
 1. Haz clic en **Commit changes...**, y elige crear una nueva rama llamada `ci`.
