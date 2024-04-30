@@ -14,47 +14,30 @@ _Crea flujos de trabajo que te permitan utilizar Integración Continua (CI) para
 </header>
 
 <!--
-  <<< Notas del autor: Paso 3 >>>
+  <<< Notas del autor: Paso 4 >>>
   Comienza este paso reconociendo el paso anterior.
   Define los términos y enlaza a docs.github.com.
 -->
 
-## Paso 3: Subir informes de prueba
+## Paso 4: Agregar protecciones de rama
 
-_¡El workflow ha terminado de ejecutarse! :sparkles:_
+_¡Excelente trabajo subiendo informes de prueba! :partying_face:_
 
-Entonces, ¿qué hacemos cuando necesitamos el producto del trabajo de un trabajo en otro? Podemos usar el almacenamiento de [artefactos integrado](https://docs.github.com/actions/advanced-guides/storing-workflow-data-as-artifacts) para guardar artefactos creados de un trabajo para ser utilizados en otro trabajo dentro del mismo workflow.
+Echa un vistazo al cuadro de fusión, notarás que puedes fusionar esto incluso si el proceso de revisión no se ha cumplido.
 
-Para cargar artefactos en el almacenamiento de artefactos, podemos usar una acción construida por GitHub: [`actions/upload-artifacts`](https://github.com/actions/upload-artifact).
+Las ramas protegidas aseguran que los colaboradores en tu repositorio no puedan realizar cambios irrevocables en las ramas. Habilitar ramas protegidas también te permite habilitar otros controles y requisitos opcionales, como revisiones requeridas y verificaciones de estado requeridas.
 
-### :keyboard: Actividad: Subir informes de prueba
+### :keyboard: Actividad: Agregar protecciones de rama
 
-1. Edita tu archivo de workflow.
-1. Actualiza el paso `Run markdown lint` en tu trabajo de `build` para usar `vfile-reporter-json` y generar los resultados en `remark-lint-report.json`.
-1. Agrega un paso a tu trabajo de `build` que utilice la acción `upload-artifact`. Este paso debería subir el archivo `remark-lint-report.json` generado por el paso `Run markdown lint` actualizado.
-1. Tu nuevo trabajo de `build` debería lucir así:
-
-   ```yml
-   build:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v4
-
-       - name: Run markdown lint
-         run: |
-           npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
-           npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-lint-report.json
-
-       - uses: actions/upload-artifact@v3
-         with:
-           name: remark-lint-report
-           path: remark-lint-report.json
-   ```
-
-1. Confirma tu cambio en esta rama.
-1. Espera unos 20 segundos y luego actualiza esta página (la que estás siguiendo instrucciones). [GitHub Actions](https://docs.github.com/actions) se actualizará automáticamente al siguiente paso.
-
-Al igual que la acción de carga para enviar artefactos al almacenamiento, puedes usar la acción de descarga para descargar estos artefactos previamente subidos desde el trabajo de `build`: [`actions/download-artifact`](https://github.com/actions/download-artifact). Por brevedad, omitiremos ese paso para este curso.
+1. Ve a la configuración de **Ramas**. Puedes navegar a esa página manualmente seleccionando la pestaña más a la derecha en la parte superior del repositorio llamada **Configuración** y luego haciendo clic en **Ramas**.
+1. Haz clic en **Agregar regla de protección de rama** bajo "Reglas de protección de rama".
+1. Escribe `stemdo` en **Patrón de nombre de la rama**.
+1. Marca la casilla **Require a pull request before merging**.
+1. Desmarca la casilla **Require approvals**.
+1. Marca la casilla **Require status checks to pass before merging**.
+1. Marca todas las compilaciones y pruebas que te gustaría ver en el nuevo cuadro gris que se mostrará.
+1. Haz clic en **Crear**.
+1. _Una vez que activas la protección de rama, las Acciones ya no pueden enviar directamente a la rama `stemdo`. Espera unos 20 segundos y luego ve a la rama `ci`. [GitHub Actions](https://docs.github.com/actions) se actualizará automáticamente al siguiente paso en la rama `ci`. Deberás seguir las instrucciones en esta rama._
 
 <footer>
 
